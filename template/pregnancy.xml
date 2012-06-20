@@ -1,0 +1,43 @@
+<pregnancy>
+    <health_id>{{patient.health_id}}</health_id>
+    <household_head_health_id>{{patient.household.health_id}}</household_head_health_id>
+    <first_name>{{patient.first_name}}</first_name>
+    <surname>{{patient.last_name}}</surname>
+    {% if patient.estimated_dob %}
+    <dob_known>yes</dob_known>
+    <age>{{patient.age}}</age>
+    {% else %}        
+    <dob_known>no</dob_known>
+    <age>{{patient.age}}</age>    
+    {% endif %}    
+    <edd_known>{{patient.chw}}</edd_known>
+    <edd>{{patient.chw}}</edd>
+    <mobile_phone_number />
+    <n0:case case_id="{{caseid}}" user_id="4cf0525b9cffc0a28ce6b36cc823e486" date_modified="2012-05-31T16:12:15.428+03" xmlns:n0="http://commcarehq.org/case/transaction/v2">
+    <n0:create>
+    <n0:case_name>{{patient.full_name}}</n0:case_name>
+    <n0:owner_id>4cf0525b9cffc0a28ce6b36cc823e486</n0:owner_id>
+    <n0:case_type>pregnancy</n0:case_type>
+    </n0:create>
+    <n0:update>
+    <n0:external_id>{{patient.health_id}}</n0:external_id>
+    <n0:first_name>{{patient.first_name}}</n0:first_name>
+    <n0:surname>{{patient.last_name}}</n0:surname>
+    <n0:edd>2012-05-11</n0:edd>
+    <n0:dob>{{patient.dob}}</n0:dob>
+    <n0:mobile_phone_number />
+    <n0:lmp>2011-08-11</n0:lmp>
+    <n0:household_head_health_id>{{patient.household.health_id}}</n0:household_head_health_id>
+    <n0:health_id>{{patient.health_id}}</n0:health_id>
+    </n0:update>
+    </n0:case>
+    <n1:meta xmlns:n1="http://openrosa.org/jr/xforms">
+    <n1:deviceID>351729054595367</n1:deviceID>
+    <n1:timeStart>{{timestart}}</n1:timeStart>
+    <n1:timeEnd>{{timeend}}</n1:timeEnd>
+    <n1:username>test</n1:username>
+    <n1:userID>4cf0525b9cffc0a28ce6b36cc823e486</n1:userID>
+    <n1:instanceID>{{instanceid}}</n1:instanceID>
+    <n2:appVersion xmlns:n2="http://commcarehq.org/xforms">CommCare ODK, version "2.0"(1067). CommCare Version 2.0. Build #1067, built on: May-09-2012</n2:appVersion>
+    </n1:meta>
+    </pregnancy>

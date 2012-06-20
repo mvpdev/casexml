@@ -1,0 +1,6 @@
+*.pyc
+.project
+*~
+*.db
+build/*
+dist/*
