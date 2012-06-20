@@ -19,7 +19,7 @@ template_name:      Name of the template you want to populate and save. This sho
 
 example:
 ========
-To generate casexml for data is Patient.csv and the casexml template is patient.xml use this command.
+To generate casexml for data in Patient.csv and the casexml template is patient.xml use this command.
 
 $python casexml.py csv Patient.csv template/patient.csv
 
