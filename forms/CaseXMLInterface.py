@@ -26,6 +26,7 @@ class CaseXMLInterface(object):
         self.data['caseid'] = uuid.uuid4().hex
         self.data['timestart'] = self._format_datetime(datetime.utcnow())
         self.data['timeend'] = self._format_datetime(datetime.utcnow())
+        self.data['date_modified'] = self._format_datetime(datetime.utcnow())
         self.template_name = template
         self.load_template()
 
