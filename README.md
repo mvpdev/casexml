@@ -6,7 +6,7 @@ This applications both works for CSV document or Dictionary and it auto fill dat
 This template is then pushed to commcare or saved in the output folder.
 
 How it works:
-
+   
     # Create a casexml template using
 
     # Prepare the data to export into a csv file. Ensure the headings is one word for each row.
