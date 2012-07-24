@@ -12,6 +12,7 @@ import const as CONST
 #Form Templates
 from forms import CaseXMLInterface
 
+
 class Main:
 
     format = ""
@@ -19,7 +20,7 @@ class Main:
     save = True
     template = ""
     submit = False
-                                
+           
     def __init__(self):
         ''' Get arguments '''
         args = sys.argv
@@ -36,7 +37,6 @@ class Main:
                 self.save = True
                 self.template = ""
                 self.submit = False
-
 
             if self.format not in ('csv','dict'):
                 self.help()
@@ -92,7 +92,7 @@ class Main:
                 info[label] = value
             
             form = CaseXMLInterface(info, self.template)
-            save_casexmlform(form)
+            #save_casexmlform(self,form)
             transmit_form(form)
 
 
