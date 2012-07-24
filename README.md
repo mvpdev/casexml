@@ -14,7 +14,6 @@ How it works:
 
     # To run: $ python casexml.py format filename_location template_name
 
-
 Variables
 ==========
 format:             This is  format of data you want to read. It can be either csv, or dict for dictionary 
