@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# vim: ai ts=4 sts=4 et sw=4 encoding=utf-8
+
 import os
 import sys
 import csv
@@ -20,7 +23,7 @@ class Main:
     save = True
     template = ""
     submit = False
-           
+
     def __init__(self):
         ''' Get arguments '''
         args = sys.argv
@@ -28,30 +31,22 @@ class Main:
             try:
                 self.format = args[1].lower()
                 self.file_name = args[2]
-                self.save = args[4]
                 self.template = args[3]
-                self.submit = args[5]
             except:
                 self.format = ""
                 self.file_name = ""
-                self.save = True
                 self.template = ""
-                self.submit = False
 
-            if self.format not in ('csv','dict'):
+            if self.format not in ('csv'):
                 self.help()
             else:
-                if self.format =='csv':
-                    if not check_file(self.file_name, "csv"):
-                        print "Invalid file location or file does not exist." \
-                              "Check if it has a .csv extenion"
-                    else:
-                        self.export_csv()
-                if self.format =='dict':
-                    print "Working on data dictionary"
+                if not check_file(self.file_name, "csv"):
+                    print "Invalid file location or file does not exist." \
+                          "Check if it has a .csv extenion"
+                else:
+                    self.export_csv()
         else:
             self.help()
-
 
     def help(self):
         print (u"------------------------------------------\n"
@@ -59,16 +54,10 @@ class Main:
                 "------------------------------------------\n"
                 "Contains function to generate Casexml and save or \n"
                 "submit to CommcareHq\n"
-                "To run:\n $ python casexml.py  datasource_type filename template "
-                "save=True/False submit=True/False\n\nOPTIONS:\n-------- \n"
-                "datasource_type     Type of data Source. can be either csv, "
-                "dictionary(data) \n"
-                "filename            Fullname of the file holding data., "
-                " Incase of dictionary, pass the dictionary \n"
-                "template            Template Name, including .xml extension\n"
-                "save                If to save xml output or not. Forms "
-                "are stored in output directory")
-
+                "To run:\n $ python casexml.py csvfile template "
+                "\n\nOPTIONS:\n-------- \n"
+                "csvfile     A full path of csv file to be exported to"
+                " CommcareHQ ")
 
     def export_csv(self):
         info = {}
@@ -77,22 +66,22 @@ class Main:
             print "Template doesnot exist, or invalid template. Check if " \
                     "it has a .xml extenion"
             return 0
-        
+
         try:
             data = csv.reader(open(self.file_name, 'rb'))
         except:
             print "Data doesnt exist"
-        
-        #Remove Header       
+
+        #Remove Header
         header = data.next()
         info = {}
         #Loop through each row and get data
         for x in data:
             for label, value in zip(header, x):
                 info[label] = value
-            
+
             form = CaseXMLInterface(info, self.template)
-            #save_casexmlform(self,form)
+            save_casexmlform(form)
             transmit_form(form)
 
 
