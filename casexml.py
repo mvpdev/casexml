@@ -18,7 +18,6 @@ from forms import CaseXMLInterface
 
 class Main:
 
-    format = ""
     file_name = ""
     save = True
     template = ""
@@ -29,22 +28,17 @@ class Main:
         args = sys.argv
         if len(args):
             try:
-                self.format = args[1].lower()
-                self.file_name = args[2]
-                self.template = args[3]
+                self.file_name = args[1]
+                self.template = args[2]
             except:
-                self.format = ""
                 self.file_name = ""
                 self.template = ""
 
-            if self.format not in ('csv'):
-                self.help()
+            if not check_file(self.file_name, "csv"):
+                print "Invalid file location or file does not exist." \
+                      "Check if it has a .csv extenion"
             else:
-                if not check_file(self.file_name, "csv"):
-                    print "Invalid file location or file does not exist." \
-                          "Check if it has a .csv extenion"
-                else:
-                    self.export_csv()
+                self.export_csv()
         else:
             self.help()
 
@@ -82,7 +76,7 @@ class Main:
 
             form = CaseXMLInterface(info, self.template)
             save_casexmlform(form)
-            transmit_form(form)
+            #transmit_form(form)
 
 
 if __name__ == '__main__':
